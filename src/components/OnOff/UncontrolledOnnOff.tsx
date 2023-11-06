@@ -2,9 +2,10 @@ import React, {useState} from "react";
 
 type PropsType = {
     //on: boolean
+    onChange: (on: boolean)=>void
 }
 
-export const OnnOff = (props: PropsType) => {
+export const UncontrolledOnnOff = (props: PropsType) => {
 
     // let on = false // "примитивный" локальный стейт
     console.log("OnOff rendering")
@@ -42,9 +43,19 @@ export const OnnOff = (props: PropsType) => {
         backgroundColor: on ? "green" : "red"
     }
 
+    const onClicked = () => {
+        setOn(true)
+        props.onChange(true)
+    }
+
+    const offClicked = () => {
+        setOn(false)
+        props.onChange(false)
+    }
+
     return <div>
-        <div style={onStyle} onClick={ ()=>{setOn(true)} }>On</div>
-        <div style={ofStyle} onClick={()=>{setOn(false)}}>Off</div>
+        <div style={onStyle} onClick={onClicked}>On</div>
+        <div style={ofStyle} onClick={offClicked}>Off</div>
         <div style={indicatorStyle}></div>
     </div>
 }

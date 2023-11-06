@@ -1,25 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-// import {UncontrolledAccordion} from "./components/accordion/UncontrolledAccordion";
-// import {UnControlledRating} from "./components/rating/UnControlledRating";
-//import {OnnOff} from "./components/OnOff/OnnOff";
-import {UncontrolledAccordion} from "./components/SelfcontrolledAccordion/UncontrolledAccordion";
-import {UnControlledRating} from "./components/SelfControlledRating/UnControlledRating";
-import {OnnOff} from "./components/OnOff/OnnOff";
-import {Rating} from "./components/rating/Rating";
-import {Accordion} from "./components/accordion/Accordion";
+import {RatingValueType} from "./components/rating/Rating";
+import {OnnOff} from "./components/OnOff/OnOff";
+import {UncontrolledOnnOff} from "./components/OnOff/UncontrolledOnnOff";
 
 function App() {
+
+    let [ratingValue, setRatingValue] = useState<RatingValueType>(0)
+    let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
+    let [switchOn, setSwitchOn] = useState<boolean>(false)
+
     return (
         <div className={"App"}>
-            <OnnOff/>
-            {/*//     <OnnOff on={false}/>*/}
-            {/*//     <OnnOff on={true}/>*/}
-            <UncontrolledAccordion titleValue={"Menu"}/>
+
+            {/*<OnnOff on={switchOn} onChange={setSwitchOn}/>*/}
+            {/*<OnOff on={true} onChange={(on:boolean)=>{alert(on)}}/>*/}
+
+            <UncontrolledOnnOff onChange={setSwitchOn }/> {switchOn.toString()}
+
+            {/*//     <UncontrolledOnnOff on={false}/>*/}
+            {/*//     <UncontrolledOnnOff on={true}/>*/}
+
+            {/*<UncontrolledAccordion titleValue={"Menu"}/>*/}
             {/*<UncontrolledAccordion titleValue={"Users"}/>*/}
-            <UnControlledRating/>
-            {/*<Rating value={3}/>*/}
-            {/*<Accordion titleValue={"Menu"} collapsed={false}/>*/}
+            {/*<UnControlledRating/>*/}
+
+            {/*<Rating value={ratingValue}*/}
+            {/*        onClick={setRatingValue}/>*/}
+
+            {/*<Accordion titleValue={"Menu"} collapsed={accordionCollapsed} onChange={()=> {setAccordionCollapsed(!accordionCollapsed)}}/>*/}
 
 
 
